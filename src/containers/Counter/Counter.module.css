@@ -1,0 +1,37 @@
+.Ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+}
+.Ul li {
+  background: #fa923f;
+  margin: 10px auto;
+  width: 50px;
+  padding: 15px 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Button {
+  background-color: #c0392b;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.Button:focus {
+  outline: 0;
+}
+.Button:hover {
+  background-color: #e74c3c;
+}
