@@ -1,41 +1,13 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actionCounter from "../../store/actions/index";
 
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
-
-import * as actionTypes from "../../store/actions";
+import classes from "./Counter.module.css";
 
 class Counter extends Component {
-  //   state = {
-  //     counter: 0
-  //   };
-
-  //   counterChangedHandler = (action, value) => {
-  //     switch (action) {
-  //       case "inc":
-  //         this.setState(prevState => {
-  //           return { counter: prevState.counter + 1 };
-  //         });
-  //         break;
-  //       case "dec":
-  //         this.setState(prevState => {
-  //           return { counter: prevState.counter - 1 };
-  //         });
-  //         break;
-  //       case "add":
-  //         this.setState(prevState => {
-  //           return { counter: prevState.counter + value };
-  //         });
-  //         break;
-  //       case "sub":
-  //         this.setState(prevState => {
-  //           return { counter: prevState.counter - value };
-  //         });
-  //         break;
-  //     }
-  //   };
   render() {
     return (
       <div>
@@ -55,10 +27,13 @@ class Counter extends Component {
         />
         <hr />
         <br />
-        <button onClick={() => this.props.onStoreResult(this.props.ctr)}>
+        <button
+          className={classes.Button}
+          onClick={() => this.props.onStoreResult(this.props.ctr)}
+        >
           Store results
         </button>
-        <ul>
+        <ul className={classes.Ul}>
           {this.props.storedResults.map(result => (
             <li
               onClick={() => this.props.onDeleteResult(result.id)}
@@ -80,19 +55,14 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
-    onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-    onAddCounter: () => dispatch({ type: actionTypes.ADD, value: 10 }),
-    onSubtractCounter: () =>
-      dispatch({ type: actionTypes.SUBTRACT, value: 15 }),
-
+    onIncrementCounter: () => dispatch(actionCounter.increment()),
+    onDecrementCounter: () => dispatch(actionCounter.decrement()),
+    onAddCounter: () => dispatch(actionCounter.add(10)),
+    onSubtractCounter: () => dispatch(actionCounter.subtract(15)),
     ////////////////////////////////
     ////////////////////////////////
-    ////////////////////////////////
-    onStoreResult: result =>
-      dispatch({ type: actionTypes.STORE_RESULT, result: result }),
-    onDeleteResult: id =>
-      dispatch({ type: actionTypes.DELETE_RESULT, resultElId: id })
+    onStoreResult: result => dispatch(actionCounter.storeResult(result)),
+    onDeleteResult: id => dispatch(actionCounter.deleteResult(id))
   };
 };
 
